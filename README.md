@@ -9,3 +9,5 @@ Note about non-breaking spaces
 ------------------------------
 
 I've found out the hard way that ENEX exports often contain non-breaking space characters (0xA0) that you may not notice right away because they look like regular spaces.  This script does not remove them, so be aware that they might exist.
+
+Now this script supports processing of file passed via command line arg.

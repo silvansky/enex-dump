@@ -20,10 +20,14 @@
 //
 // Invoke like so:
 //
-// php enex-dump.php
+// php enex-dump.php filename.enex
 
-$file = "My Notes.enex"; // Path of input file
-$outdir = "output"; // Path of output folder
+// Modification by Valentine Silvansky:
+// Now filename is taken from command line args and its name is used to 
+// create a subdir in output folder.
+
+$file = $argv[1]; // Path of input file (from command line)
+$outdir = "output/".pathinfo($file, PATHINFO_FILENAME); // Path of output folder
 $ext = "txt"; // Extension to use for exported notes
 
 //
@@ -31,7 +35,7 @@ $ext = "txt"; // Extension to use for exported notes
 $pos = 0; 
 $nodes = array(); 
 
-@mkdir($outdir);
+@mkdir($outdir, 0777, true);
 
 if ( !($fp = fopen($file, "r")) ) 
 { 
